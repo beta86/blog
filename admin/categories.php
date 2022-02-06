@@ -19,6 +19,7 @@
                     <div class="col-xs-6">
 
                         <?php
+                        //Create new post
                         if (isset($_POST['submit'])) {
                             $cat_title = $_POST['cat_title'];
                             if ($cat_title == "" || empty($cat_title)) {
@@ -43,6 +44,34 @@
                             </div>
                             <div class="form-group">
                                 <input class="btn btn-primary" type="submit" name="submit" value="Add Category">
+                            </div>
+                        </form>
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <label for="cat-title">Edit Category</label>
+
+                                <?php
+                                if (isset($_GET['edit'])) {
+                                    $cat_id = $_GET['edit'];
+
+                                $query = "SELECT * FROM categories WHERE cat_id = $cat_id";
+                                $select_categories_id = mysqli_query($connection, $query);
+
+                                while($row = mysqli_fetch_assoc($select_categories_id)) {
+                                    $cat_id = $row['cat_id'];
+                                    $cat_title = $row['cat_title'];
+                                    ?>
+
+                                    <input value="<?php if (isset($cat_title)) {echo $cat_title;} ?> " class="form-control" type="text" name="cat_title">
+
+                                <?php
+                                } }
+                                ?>
+
+
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-primary" type="submit" name="submit" value=Update>
                             </div>
                         </form>
                     </div>
@@ -70,11 +99,14 @@
                             echo "<td>{$cat_id}</td>";
                             echo "<td>{$cat_title}</td>";
                             echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
+                            echo "<td><a href='categories.php?edit={$cat_id}'>Edit</a></td>";
                             echo "</tr>";
                         }
                         ?>
 
                         <?php
+
+                        //Delete Posts
                         if (isset($_GET['delete'])) {
                             $get_category_id = $_GET['delete'];
                             $query = "DELETE FROM categories WHERE cat_id = {$get_category_id}";
@@ -82,6 +114,8 @@
                             header("Location: categories.php");
                         }
                         ?>
+
+
 
                         </tbody>
                     </table>
