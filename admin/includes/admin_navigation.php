@@ -27,7 +27,6 @@
         </li>
     </ul>
 
-
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
@@ -46,7 +45,7 @@
                 </ul>
             </li>
             <li>
-                <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Categories Page</a>
+                <a href="categories.php"><i class="fa fa-fw fa-wrench"></i> Categories Page</a>
             </li>
             <li class="active">
                 <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Comments</a>
