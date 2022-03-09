@@ -32,7 +32,7 @@
                             </div>
                         </form>
 
-                        <?php /// UPdate and Include Query
+                        <?php /// Update and Include Query
                         if (isset($_GET['edit'])) {
                             $cat_id = $_GET['edit'];
 
